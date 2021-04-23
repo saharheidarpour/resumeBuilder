@@ -1,0 +1,6 @@
+<h1>Build your resume in minutes</h1>
+<h3>Select a template</h3>
+
+<drag-scroll>
+  <img *ngFor="let template of templates$ | async" drag-scroll-item [src]="template.imageUrl" />
+</drag-scroll>

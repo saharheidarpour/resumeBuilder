@@ -1,0 +1,17 @@
+<div class="app-container">
+  <nav class="menu" [class.pin]="pinMenu">
+    <!--    <span class="icon "></span>-->
+    <a class="navbar-toggler  border-0"  (click)="togglePin()" [class.collapsed]="pinMenu" type="button" data-toggle="collapse"
+       data-target="#collapsingNavbar">
+      <!-- these spans become the three lines -->
+      <span> </span>
+      <span> </span>
+      <span> </span>
+    </a>
+    <ul>
+      <li  routerLinkActive="active" routerLink="/about">About</li>
+      <li routerLinkActive="active"  routerLink="/resume">Generate Resume</li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,110 @@
+:host {
+  .app-container {
+    height: 100vh;
+    position: relative;
+  }
+
+  // menu-animation
+  .navbar-toggler {
+    top: 21px;
+    right: 22.5px;
+    position: absolute;
+    user-select: none;
+
+    span {
+      display: block;
+      background-color: #4f4f4f;
+      height: 3px;
+      width: 25px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      position: relative;
+      left: 0;
+      opacity: 1;
+      transition: all 0.35s ease-out;
+      transform-origin: center left;
+    }
+  }
+
+
+  .navbar-toggler span:nth-child(1) {
+    margin-top: 0.3em;
+  }
+
+  .navbar-toggler.collapsed span:nth-child(1) {
+    transform: translate(15%, -33%) rotate(45deg);
+  }
+
+  .navbar-toggler.collapsed span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-toggler.collapsed span:nth-child(3) {
+    transform: translate(15%, 33%) rotate(-45deg);
+  }
+
+  .navbar-toggler span:nth-child(1) {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+
+  .navbar-toggler span:nth-child(2) {
+    opacity: 1;
+  }
+
+  .navbar-toggler span:nth-child(3) {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+
+  .menu {
+    height: 70px;
+    border-radius: 70px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    top: 50px;
+    right: 10%;
+    width: 70px;
+    z-index: 2;
+    background-color: var(--background-default);
+    transition: all 0.3s;
+    cursor: pointer;
+    overflow: hidden;
+
+    .icon {
+      position: absolute;
+      right: 17px;
+      top: 17px;
+      font-size: 36px;
+    }
+
+    &:hover, &.pin {
+      width: 80%;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 140px;
+      width: fit-content;
+      height: 70px;
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        user-select: none;
+        font-size: 1.2rem;
+        margin: 0 10px;
+        padding: 10px;
+        min-width: fit-content;
+        outline: none;
+
+        &.active {
+          border: 2px solid var(--backgroud-senary);
+          border-radius: 30px;
+
+        }
+      }
+    }
+  }
+}
