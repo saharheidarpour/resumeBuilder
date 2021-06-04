@@ -1,0 +1,161 @@
+<section class="content">
+  <nav [class.fullWidth]="showSettings">
+    <span class="material-icons" (click)="toggleSettings()">settings</span>
+    <span class="material-icons" (click)="print()">print</span>
+    <a class="color purple" (click)="changeColor('purple')"></a>
+    <a class="color green" (click)="changeColor('green')"></a>
+    <a class="color yellow" (click)="changeColor('yellow')"></a>
+    <a class="color blue" (click)="changeColor('blue')"></a>
+    <a class="color orange" (click)="changeColor('orange')"></a>
+    <a class="color red" (click)="changeColor('red')"></a>
+    <a class="color gray" (click)="changeColor('gray')"></a>
+  </nav>
+  <section class="main">
+    <div id="cv-form-container" class="cv-form-container flex-lg-row flex-column-reverse">
+      <form [formGroup]="formGroup" class="flex-lg-row flex-column-reverse">
+        <div class="skills " [class]="color">
+          <!-- Upload image -->
+          <div class="group-gap desktop-profile-image">
+            <div class="avatar-upload" (click)="fileInput.click()">
+              <div class="avatar-edit">
+                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                       (change)="uploadFile($event)"/>
+              </div>
+              <div class="avatar-preview">
+                <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Upload image end -->
+
+          <label class="profile-title">Experiences</label>
+          <!-- Skills -->
+          <div class="skills sliders" *ngFor="let skill of skills; let i=index">
+            <input type="text" placeholder="Skill..." [formControlName]="'skillTitle'+(i+1)">
+            <mat-slider [class]="color" [formControlName]="'skillValue'+(i+1)"></mat-slider>
+          </div>
+          <span (click)="addSkill()"><i class="material-icons" >add</i></span>
+
+          <label class="profile-title">Achievements</label>
+          <div class="side-section" *ngFor="let achievement of achievements; let i=index">
+            <input type="text" [class]="color + ' title-row' " placeholder="achievement..."
+                   [formControlName]="'achievementTitle'+(i+1)">
+            <textarea type="text" placeholder="description..."
+                      [formControlName]="'achievementDescription'+(i+1)"></textarea>
+          </div>
+          <span (click)="addAchievements()"><i class=" material-icons" >add</i></span>
+
+          <label class="profile-title">Interests</label>
+          <div class="side-section" *ngFor="let interest of interests; let i=index">
+            <input type="text" [class]="color + ' surname' " placeholder="achievement..."
+                   [formControlName]="'interestTitle'+(i+1)">
+            <textarea type="text" placeholder="description..."
+                      [formControlName]="'interestDescription'+(i+1)"></textarea>
+          </div>
+          <span (click)="addInterest()"><i class=" material-icons" >add</i></span>
+
+          <label class="profile-title">Contacts</label>
+          <div class="contacts" *ngFor="let interest of contacts; let i=index">
+            <div><i class="fa fa-map-marker" ></i><input type="text" placeholder="city..."
+                                                                           [formControlName]="'contactCity'+(i+1)">
+            </div>
+            <div><i class="fa fa-mobile" ></i><input type="text" placeholder="phone..."
+                                                                       [formControlName]="'phone'+(i+1)"></div>
+            <div><i class="fa fa-phone" ></i><input type="text" placeholder="mobile..."
+                                                                      [formControlName]="'mobile'+(i+1)"></div>
+            <div><i class="fa fa-envelope-o" ></i><input type="text" placeholder="email..."
+                                                                           [formControlName]="'email'+(i+1)"></div>
+            <div><i class="fa fa-home" ></i><input type="text" placeholder="address..."
+                                                                     [formControlName]="'address'+(i+1)"></div>
+
+          </div>
+          <span (click)="addContactInfo()"><i class=" material-icons" >add</i></span>
+
+
+        </div>
+        <div class=" cv-right-section">
+          <!-- Upload image -->
+          <!-- Upload image end -->
+          <div class="name d-flex">
+            <input [class]="color +' name'" placeholder="Name" type="text" formControlName="name">
+            <input [class]="color + ' surname'" type="text" formControlName="surName" placeholder="Surname">
+          </div>
+          <div class="job">
+            <input class="name" placeholder="Job title" type="text" formControlName="jobTitle">
+          </div>
+          <div class="profile">
+            <label class="profile-title">Profile</label>
+            <textarea class="aboutYourSelf" placeholder="About yourself..."  formControlName="aboutYourSelf"></textarea>
+
+          </div>
+          <div class="experience">
+            <label class="profile-title">Experience</label>
+            <div *ngFor="let experience of experiences; let i=index">
+              <div>
+                <input [class]="color + ' title-row' " placeholder="Company..." type="text"
+                       [formControlName]="'company'+(i+1)">
+              </div>
+              <div class="d-flex align-items-start flex-wrap">
+                <input [class]="color + ' title-row' " placeholder="Function title..." type="text"
+                       [formControlName]="'experienceTitle'+(i+1)">
+                <div>
+                  <input matInput [matDatepicker]="startDatePicker" (focus)="startDatePicker.open()"
+                         [formControlName]="'startDate'+(i+1)"
+                         placeholder="Start Date">
+                  <mat-datepicker #startDatePicker></mat-datepicker>
+                </div>
+
+                <div>
+                  <input matInput [matDatepicker]="endDatePicker" (focus)="endDatePicker.open()"
+                         [formControlName]="'endDate'+(i+1)"
+                         placeholder="End Date">
+                  <mat-datepicker #endDatePicker></mat-datepicker>
+                </div>
+
+                <textarea class="aboutYourSelf" placeholder="description..." type="text"
+                          [formControlName]="'description'+(i+1)"></textarea>
+              </div>
+            </div>
+            <span (click)="addExperience()"><i class=" material-icons" >add</i></span>
+
+          </div>
+
+
+          <div class="experience edu">
+            <label class="profile-title">Education</label>
+            <div *ngFor="let education of educations; let i=index">
+              <div class="d-flex align-items-start flex-wrap">
+                <input [class]="color + ' title-row' " placeholder="Education / course name..." type="text"
+                       [formControlName]="'education'+(i+1)">
+
+                <input  placeholder="Organization" type="text" [formControlName]="'organization'+(i+1)">
+                <input  placeholder="city" type="text" [formControlName]="'city'+(i+1)">
+                <div>
+                  <input matInput [matDatepicker]="startDatePicker" (focus)="startDatePicker.open()"
+                         [formControlName]="'eduStartDate'+(i+1)"
+                         placeholder="Start Date">
+                  <mat-datepicker #startDatePicker></mat-datepicker>
+                </div>
+
+                <div>
+                  <input matInput [matDatepicker]="endDatePicker" (focus)="endDatePicker.open()"
+                         [formControlName]="'eduEndDate'+(i+1)"
+                         placeholder="End Date">
+                  <mat-datepicker #endDatePicker></mat-datepicker>
+                </div>
+              </div>
+              <textarea class="aboutYourSelf" placeholder="description..." type="text"
+                        [formControlName]="'eduDescription'+(i+1)"></textarea>
+
+            </div>
+            <span (click)="addEducations()"><i class=" material-icons" >add</i></span>
+
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </section>
+</section>

@@ -2,5 +2,5 @@
 <h3>Select a template</h3>
 
 <drag-scroll>
-  <img *ngFor="let template of templates$ | async" drag-scroll-item [src]="template.imageUrl" />
+  <img *ngFor="let template of templates$ | async" drag-scroll-item [src]="template.imageUrl" [routerLink]="['/resume/template',template.id]" />
 </drag-scroll>

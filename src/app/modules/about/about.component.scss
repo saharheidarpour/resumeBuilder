@@ -3,6 +3,7 @@
     display: flex;
     height: 100%;
     width: 100%;
+    background: var(--background-default);
   }
 
   .picture, .about {
@@ -11,7 +12,7 @@
 
   .picture {
     background-image: url("/assets/images/my-pic.png");
-    background-color: #000;
+    //background-color: var(--backgroud-senary);
     background-position: center 100px;
     background-repeat: no-repeat;
     background-size: contain;
@@ -20,14 +21,16 @@
   .about {
     .name {
       margin: 150px 0 0 50px;
-      font-size: 48px;
+      font-size: 60px;
       font-weight: 600;
+      color: var(--text-light);
     }
 
     .description {
       margin: 50px;
       font-size: 1.5rem;
       line-height: 1.5;
+      color: var(--text-light);
     }
 
     .contact-info {
@@ -58,8 +61,9 @@
 
         .val {
           font-size: 1rem;
-          color: var(--text-default);
+          color: var(--text-light);
           margin-left: 10px;
+
         }
       }
 
